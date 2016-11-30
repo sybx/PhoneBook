@@ -1,0 +1,43 @@
+﻿@model PhoneBook.Models.Subscriber
+
+@{
+    ViewBag.Title = "Удаление абонента";
+}
+
+<div class="well">
+    <h3>Вы действительно хотите удалить этого абонента?</h3>
+</div>
+
+<div>
+    <h4>Данные абонента</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+        <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+        <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SubscriberType)</dt>
+        <dd>@Html.DisplayFor(model => model.SubscriberType)</dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span> Удалить
+            </button>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-left"></span> Вернуться к списку
+            </a>
+        </div>
+    }
+</div>

@@ -1,0 +1,42 @@
+﻿@model PhoneBook.Models.Subscriber
+
+@{
+    ViewBag.Title = "Данные абонента";
+}
+
+<div>
+    <h4>Данные абонента</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+        <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+        <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.SubscriberType)</dt>
+        <dd>@Html.DisplayFor(model => model.SubscriberType)</dd>
+
+        @if (Model.ImageData != null)
+        {
+            <dt>@(Model.SubscriberType == PhoneBook.Models.SubscriberType.NaturalPerson ? "Фотография" : "Логотип")</dt>
+            <dd><img src="@Url.Action("GetImage", "Home", new { Model.Id })" class="img-thumbnail" alt="Картинка" width="150" height="150"></dd>
+        }
+
+    </dl>
+</div>
+<div class="form-actions">
+    <a href="@Url.Action("Edit", "Home", new { id = Model.Id })" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span> Редактировать
+    </a>
+    <a href="@Url.Action("Delete", "Home", new { id = Model.Id })" class="btn btn-danger">
+        <span class="glyphicon glyphicon-trash"></span> Удалить
+    </a>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-left"></span> Вернуться к списку
+    </a>
+</div>
